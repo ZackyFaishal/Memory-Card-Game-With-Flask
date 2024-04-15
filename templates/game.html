@@ -1,0 +1,174 @@
+{% extends "layout.html" %} {% block body %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <style>
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 13px;
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .card {
+            width: 100%;
+            height: 0;
+            padding-bottom: 150%; /* 150% of width for a 2:3 aspect ratio */
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+        }
+        .inner {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        .image,
+        .card-back {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            backface-visibility: hidden;
+            image-size: cover;
+        }
+        .image {
+            object-fit: cover;
+        }
+        .card-back {
+            background-color: #7A7776;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #ffffff;     
+        }
+        .opened .inner {
+            transform: rotateY(180deg);
+        }
+        .opened .image {
+            z-index: -1;
+        }
+        .opened .card-back {
+            z-index: 1;
+        }
+        .score {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>    
+    <div class="text-center">
+        <h1>MEMORY CARD GAME</h1>    
+    </div>
+    <div class="score" id="score">Score: 0</div>
+    <div class="image-container" id="image-container">
+        <!-- JavaScript akan menambahkan elemen kartu di sini -->
+    </div>
+
+    <script>
+        const imageContainer = document.getElementById("image-container");
+        const scoreElement = document.getElementById("score");
+        let score = 0;
+        let flippedCards = [];
+
+        // Daftar path gambar yang sudah diacak
+        const imagePaths = [
+            {% for file_path in file_paths %}
+                "{{ file_path }}",
+            {% endfor %}
+        ];
+
+        // Duplicate daftar path gambar untuk membuat pasangan
+        const allImagePaths = [...imagePaths, ...imagePaths];
+
+        // Acak daftar path gambar
+        const shuffledImagePaths = shuffleArray(allImagePaths);
+
+        // Tambahkan kartu-kartu ke dalam elemen container
+        shuffledImagePaths.forEach((path, index) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.setAttribute("data-index", index);
+
+            const inner = document.createElement("div");
+            inner.className = "inner";
+
+            const img = document.createElement("img");
+            img.src = path;
+            img.alt = "Image";
+            img.className = "image";
+
+            const cardBack = document.createElement("div");
+            cardBack.className = "card-back";
+            cardBack.innerHTML = `<img src="static/img/logooo.png" alt="Cover Image" style="max-width: 100%; max-height: 100%;">`;
+
+            inner.appendChild(img);
+            inner.appendChild(cardBack);
+
+            card.appendChild(inner);
+
+            card.addEventListener("click", revealCard);
+
+            imageContainer.appendChild(card);
+        });
+
+        // Fungsi untuk mengacak array
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        // Fungsi untuk memunculkan kartu saat diklik
+        function revealCard(event) {
+            const card = event.currentTarget;
+            const index = card.getAttribute("data-index");
+
+            // Cek apakah kartu sudah terbuka atau tidak
+            if (card.classList.contains("opened")) {
+                return;
+            }
+
+            card.querySelector(".card-back").style.display = "none";
+
+            // Tambahkan kartu ke dalam daftar kartu yang telah terbuka
+            flippedCards.push({ card, index });
+
+            if (flippedCards.length === 2) {
+                // Jika ada 2 kartu yang terbuka, cek apakah pasangan atau tidak
+                const [firstCard, secondCard] = flippedCards;
+
+                if (firstCard.card.querySelector(".image").src === secondCard.card.querySelector(".image").src) {
+                    // Kartu pasangan cocok
+                    setTimeout(() => {
+                        firstCard.card.classList.add("opened");
+                        secondCard.card.classList.add("opened");
+                        score += 1;
+                        scoreElement.innerText = `Score: ${score}`;
+                        flippedCards = [];
+                    }, 1000);
+                } else {
+                    // Kartu pasangan tidak cocok
+                    setTimeout(() => {
+                        firstCard.card.querySelector(".card-back").style.display = "block";
+                        secondCard.card.querySelector(".card-back").style.display = "block";
+                        flippedCards = [];
+                    }, 1000);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,404 @@
+{% extends "layout.html" %} {% block body %}
+<div class="jumbotron jumbotron-fluid text-center background" style="background-image: url('static/images/wave-banner.jpg');">
+    
+    <div class="display-1">
+        <b>Image Processing</b>
+    </div>
+    <div class="container">
+        <div class="owl-carousel owl-theme">
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        UMUM
+                        <img src="static/images/general.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('normal') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Normal</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('grayscale') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Grayscale</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomin') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Zoom In</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('zoomout') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Zoom Out</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        PERGESERAN
+                        <img src="static/images/pergeseran.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_left') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Geser Kiri</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_right') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Geser Kanan</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_up') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Geser Atas</button>
+                        </form>
+                    </div>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <form id="" action="{{ url_for('move_down') }}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-info">Geser Bawah</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        PENERANGAN
+                        <img src="static/images/penerangan.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4> 
+                    <div class="p-2 flex-fill bd-highlight">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <td>
+                                        <form id="" action="{{ url_for('brightness_multiplication') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            <button type="submit" class="btn btn-info">Terang (*)</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form id="" action="{{ url_for('brightness_division') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            <button type="submit" class="btn btn-info">Gelap (/)</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form id="" action="{{ url_for('brightness_addition') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            <button type="submit" class="btn btn-info">Terang (+)</button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form id="" action="{{ url_for('brightness_substraction') }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            <button type="submit" class="btn btn-info">Gelap (-)</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        ANALISIS GAMBAR
+                        <img src="static/images/analisis.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <form id="" action="{{ url_for('histogram_rgb') }}" method="POST" enctype="multipart/form-data">
+                                        <button type="submit" class="btn btn-info">Histogram</button>
+                                    </form>
+                                </tr>
+                            </thead>
+                    </table>
+                </div>
+                </div>
+            </div>
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        PEMPROSESAN GAMBAR
+                        <img src="static/images/proses.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4>
+                    <div class="p-2 flex-fill bd-highlight">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <form id="" action="{{ url_for('histogram_equalizer') }}" method="POST" enctype="multipart/form-data">
+                                        <button type="submit" class="btn btn-info">Histogram Equalizer</button>
+                                    </form>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="owl-carousel-info-wrap item">
+                <div class="process-wrap">
+                    <h4 class="mb-2">
+                        FILTER GAMBAR
+                        <img src="static/images/filter.png" class="owl-carousel-verified-image img-fluid" width="800" alt="">
+                    </h4>
+                    <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('edge_detection') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-info">Edge Detection</button>
+                    </form>
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('blur') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-info">Blur</button>
+                    </form>
+                </div>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('sharpening') }}" method="POST" enctype="multipart/form-data">
+                        <button type="submit" class="btn btn-info">Sharpening</button>
+                    </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="segme-center">
+                <div class="col-md-4 process-wrap align-items-center ">
+                <h2>Segmentation
+                </h2>
+                <div class="p-2 flex-fill bd-highlight">
+                    <form id="" action="{{ url_for('thresholding') }}" method="POST" enctype="multipart/form-data">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Batas Bawah</th>
+                                    <th>Batas Atas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <div class="input-segme">
+                                    <td><input type="number" name="lower_thres" placeholder="0-255" style="width: 100px;"></td>
+                                    <td><input type="number" name="upper_thres" placeholder="0-255" style="width: 100px;"></td>
+                                    </div>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><button type="submit" class="btn btn-info">Thresholding</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+             </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="segme-center">
+                        <div class="process-wrap align-items-center">
+                            <h2>Gaussian Blur</h2>
+                            <form id="" action="{{ url_for('gaussianBlur') }}" method="POST" enctype="multipart/form-data">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <div class="input-segme">
+                                            <td><input type="number" name="size-gaussian" placeholder="Size" style="width: 100px;"></td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="segme-center">
+                        <div class="process-wrap align-items-center">
+                            <h2>Median Blur</h2>
+                            <form id="" action="{{ url_for('medianBlur') }}" method="POST" enctype="multipart/form-data">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <div class="input-segme">
+                                            <td><input type="number" name="size-median" placeholder="Size" style="width: 100px;"></td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="segme-center">
+                        <div class="process-wrap align-items-center">
+                            <h2>Lowpass Filter</h2>
+                            <form id="" action="{{ url_for('lowpass_filter') }}" method="POST" enctype="multipart/form-data">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <div class="input-segme">
+                                            <td><input type="number" name="size-low" placeholder="Size" style="width: 100px;"></td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="segme-center">
+                        <div class="process-wrap align-items-center">
+                            <h2>Highpass Filter</h2>
+                            <form id="" action="{{ url_for('highpass_filter') }}" method="POST" enctype="multipart/form-data">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <div class="input-segme">
+                                            <td><input type="number" name="size-high" placeholder="Size" style="width: 100px;"></td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="segme-center">
+                        <div class="process-wrap align-items-center">
+                            <h2>Bandpass Filter</h2>
+                            <form id="" action="{{ url_for('bandpass_filter') }}" method="POST" enctype="multipart/form-data">
+                                <table class="table table-sm">
+                                    <tbody>
+                                        <tr>
+                                            <div class="input-segme">
+                                            <td><input type="number" id="band-pass-filter" name="size-high" placeholder="Lowpass Kernel" required style="margin-left:1px">
+                                                <input type="number" id="band-pass-filter" name="size-low" placeholder="Highpass Kernel" required></td>
+                                            </div>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="segme-center">
+            <div class="process-wrap">
+                <h4 class="mb-2">
+                    FILTER GAMBAR
+                </h4>
+            <div class="p-2 flex-fill bd-highlight">
+                <form id="" action="{{ url_for('identify') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-info">Identify</button>
+                </form>
+            </div>
+            <div class="p-2 flex-fill bd-highlight">
+                <form id="bilateralFilterForm" action="{{ url_for('bilateralFilter') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-info">Bilateral Filter</button>
+                </form>
+            </div> 
+            <div class="p-2 flex-fill bd-highlight">
+                <form id="blurFilterForm" action="{{ url_for('blur_filter') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-info">Blur Filter</button>
+                </form>
+            </div>
+            <div class="p-2 flex-fill bd-highlight">
+                <form id="sharpForm" action="{{ url_for('sharp') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-info">Sharp</button>
+                </form>
+            </div>
+            <div class="p-2 flex-fill bd-highlight">
+                <form id="zeroPaddingForm" action="{{ url_for('zero_padding') }}" method="POST" enctype="multipart/form-data">
+                    <button type="submit" class="btn btn-info">Zero Padding</button>
+                </form>
+            </div>                          
+        </div>
+        <div class="col-md-4">
+            <div class="segme-center">
+                <div class="process-wrap align-items-center">
+                    <h2>Games</h2>
+                    <form id="" action="{{ url_for('games') }}" method="POST" enctype="multipart/form-data">
+                        <table class="table table-sm">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3"><button type="submit" class="btn btn-info">Generate</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="row justify
+            ">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">HASIL FOTO</h4>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col">
+                                <div class="container mt-4">
+                                    <div class="row">
+                                        <div class="content">
+                                            <h3>Gambar Asli</h3>
+                                            <img class="img-fluid" src="{{ url_for('static', filename='img/img_normal.jpg') }}"
+                                                alt="image here" style="max-width: 700px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="container mt-4">
+                                    <div class="row">
+                                        <div class="content">
+                                            <h3>Gambar Proses</h3>
+                                            <img class="img-fluid" src="{{ url_for('static', filename='img/img_now.jpg') }}"
+                                                alt="image here" style="max-width: 700px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                                                                                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+</style>
+{% endblock %}

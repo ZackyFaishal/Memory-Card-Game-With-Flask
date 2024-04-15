@@ -1,0 +1,79 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Digital Image Processing</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap" media="print" onload="this.media='all'"/>
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700;800&amp;display=swap"/>
+    </noscript>
+    <link href="static/css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
+    <link href="static/css/bootstrap-icons/bootstrap-icons.css?ver=1.2.0" rel="stylesheet">
+    <link href="static/css/bootstrap.min.css?ver=1.2.0" rel="stylesheet">
+    <link href="static/css/aos.css?ver=1.2.0" rel="stylesheet">
+    <link href="static/css/main.css?ver=1.2.0" rel="stylesheet">
+    <title>Digital Image Processing</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script class="jsbin" src="static/upload.js"></script>
+</head>
+
+<header class="bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">PeCeDE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<header>
+    <div class="cover bg-light">
+      <div class="container px-3">
+        <div class="row">
+          <div class="col-lg-6 p-2"><img class="img-fluid" src="static/images/hello3.svg" alt="hello"/></div>
+          <div class="col-lg-6">
+            <div class="mt-5">
+              <p class="lead text-uppercase mb-1">Pengolahan Citra Digital</p>
+              <h1 class="intro-title marker" >Digital Image Processing</h1>
+              <p class="lead fw-normal mt-3">Web Developer dan Mobile Application Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wave-bg"></div>
+</header>
+
+<div class="jumbotron jumbotron-fluid">
+<div class="file-upload">
+  <form id="" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+  <div class="image-upload-wrap">
+    <div class="drag-text">
+        <input name="file" class="file-upload-input" type='file' id="inputGroupFile04"accept="image/*" />
+      <h3>Select add Image</h3>
+    </div>
+  </div>
+  <div class="file-upload-content">
+    <img class="file-upload-image" src="#" alt="your image" />
+    <div class="image-title-wrap">
+      <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+    </div>
+  </div>
+  <button type="submit" class="file-upload-btn">Upload Image</button>
+</form>
+</div>
+
+</div>
